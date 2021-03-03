@@ -1,12 +1,16 @@
 <template lang='pug'>
-h1 This is home page
+NavbarComponent
 </template>
 
 
 <script lang='ts'>
 import {defineComponent} from 'vue'
+import NavbarComponent from '@/components/NavbarComponent.vue'
 export default defineComponent({
-  name: "HomeComponent",
+  name: "NavBar",
+  components: {
+    NavbarComponent,
+  }
 })
 </script>
 
