@@ -49,9 +49,10 @@ export default defineComponent({
         font-weight bold
         font-size 20px
     #paragraph
-      margin-top 10px
+      margin-top 20px
       color white
       font-weight 400
+      font-size 20px
       #link
         font-weight bold 
         color white
