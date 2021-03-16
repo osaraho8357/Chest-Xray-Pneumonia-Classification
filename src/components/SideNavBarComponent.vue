@@ -3,14 +3,15 @@
   #hide
     img#menubar(src="@/assets/menubar.png")
   #header
-    #title
-      p Pneumonia Classification
+      img#logo(src="@/assets/pneumonia-logo.png")
+      a#title(href="/")
+        p Pneumonia Classification
   #middle
     #elements
-      #element(v-for="(element, index) in elements"
-      :key="index")
+      a#element(v-for="(element, index) in elements"
+      :key="index" :href="elements[index].toLowerCase()")
         p(v-bind:class="fontawesomes[index]")
-        p {{ element }}
+        | {{ element }}
   #social-media
     a.fab.fa-facebook#social(href="https://www.facebook.com/" target="_blank")
     a.fab.fa-github#social(href="https://github.com/you0522/Chest_X-ray_Pneumonia_Classification" target="_blank")
@@ -22,17 +23,16 @@
 import {defineComponent} from 'vue'
 export default defineComponent({
   setup() {
-    const elements: string[] = [];
+    const elements: string[] = [
+      'About',
+      'Classification',
+      'Help',
+    ];
     const fontawesomes: string[] = [
-      'fas fa-home',
       'fas fa-address-card',
+      'fas fa-lungs-virus',
       'fas fa-question-circle',
-      'fas fa-envelope',
     ]
-    elements.push('home');
-    elements.push('About');
-    elements.push('Help');
-    elements.push('Contact');
     return {elements,fontawesomes,}
   }
 })
@@ -54,14 +54,22 @@ export default defineComponent({
       &:hover
         transform scale(1.1)
   #header
-    display flex
     width 350px
     text-align center
-    align-items center
+    #logo
+      width 330px
+      height auto
+      margin 50px 0 0 0
+      cursor pointer
+      transition 0.1s ease-out
+      &:hover
+        transform scale(1.1)
     #title
       font-weight bold
-      font-size 50px
+      font-size 35px
       line-height 100%
+      text-decoration none
+      color black
   #middle
     height 70%
     #elements
@@ -75,14 +83,18 @@ export default defineComponent({
         cursor pointer
         padding 20px 5px
         margin-left 5px
+        text-decoration none
+        align-items center 
+        text-align center
+        color black
         &:hover
           background-color #f2f2f2
+          p
+            color #ff6666
         p
           display flex
           justify-content center
-          align-items center 
-          text-align center
-          margin 10px 3px
+          margin 10px 10px
           font-size 22px
   #social-media
     height 10%
@@ -111,7 +123,5 @@ export default defineComponent({
         box-shadow 0 5px 5px -3px rgba(0,0,0,0.2),
         0 8px 10px 1px rgba(0,0,0,0.14),
         0 3px 14px 2px rgba(0,0,0,0.12)
-        
-        
-
+        color #ff6666
 </style>
