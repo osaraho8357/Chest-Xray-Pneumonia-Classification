@@ -4,7 +4,8 @@
     img#menubar(src="@/assets/menubar.png"
     @click="hideSidebar()")
   #header
-      img#logo(src="@/assets/pneumonia-logo.png")
+      img#logo(src="@/assets/pneumonia-logo.png"
+      @click="goHome()")
       a#title(href="/")
         p Pneumonia Classification
   #middle
@@ -28,20 +29,25 @@ export default defineComponent({
       type: Function
     },
   },
-  
-  setup() {
-    const elements: string[] = [
-      'About',
-      'Classification',
-      'Help',
-    ];
-    const fontawesomes: string[] = [
-      'fas fa-address-card',
-      'fas fa-lungs-virus',
-      'fas fa-question-circle',
-    ]
-    return {elements,fontawesomes,}
+  data() {
+    return {
+      elements: [
+        "About",
+        "Classification",
+        "Help",
+      ],
+      fontawesomes: [
+        'fas fa-address-card',
+        'fas fa-lungs-virus',
+        'fas fa-question-circle',
+      ]
+    }
   },
+  methods: {
+    goHome() {
+      document.location.href="/"
+    }
+  }
 })
 </script>
 
