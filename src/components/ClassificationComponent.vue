@@ -1,5 +1,7 @@
 <template lang='pug'>
 .main
+  .navbar 
+    button#button(@click="goHome()") GO BACK
   .top
     p#title Pneumonia Classification
   .bottom
@@ -12,13 +14,16 @@
         .afterdropped(v-else)
           img.img(:src="image" alt="")
           button.btn(@click="removeFile") REMOVE
-
-
 </template>
+
 
 <script lang='js'>
 import {defineComponent} from 'vue'
+import SideNavBarComponent from '@/components/SideNavBarComponent.vue'
 export default defineComponent({
+  components: {
+    SideNavBarComponent,
+  },
   data() {
     return {
       image: require("@/assets/pneumonia-logo.png"),
@@ -51,6 +56,9 @@ export default defineComponent({
     },
     removeFile() {
       this.image = '';
+    },
+    goHome() {
+      document.location.href = "/"
     }
   }
 })
@@ -58,13 +66,24 @@ export default defineComponent({
 
 <style lang='stylus' scoped>
 .main
+  .navbar
+    #button
+      margin 10px
+      background-color: #d3394c;
+      border: 0;
+      color: #fff;
+      cursor: pointer;
+      display: inline-block;
+      font-weight: bold;
+      padding: 10px 20px;
+      &:hover
+        background-color #722040
   .top
     #title
       font-family OCR A Std, monospace
       font-size 60px
       text-align center
       font-weight bold
-      padding 30px
   .bottom
     display flex
     justify-content center
