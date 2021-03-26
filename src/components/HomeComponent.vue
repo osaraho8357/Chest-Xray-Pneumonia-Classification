@@ -12,7 +12,7 @@ export default defineComponent({
   name: "HomeComponent",
   components: {
     ComingSoonComponent,
-  }
+  },
 })
 </script>
 
