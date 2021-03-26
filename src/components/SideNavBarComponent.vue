@@ -1,7 +1,8 @@
 <template lang='pug'>
 .main
   #hide
-    img#menubar(src="@/assets/menubar.png")
+    img#menubar(src="@/assets/menubar.png"
+    @click="hideSidebar()")
   #header
       img#logo(src="@/assets/pneumonia-logo.png")
       a#title(href="/")
@@ -22,6 +23,12 @@
 <script lang='ts'>
 import {defineComponent} from 'vue'
 export default defineComponent({
+  props: {
+    hideSidebar: {
+      type: Function
+    },
+  },
+  
   setup() {
     const elements: string[] = [
       'About',
@@ -34,7 +41,7 @@ export default defineComponent({
       'fas fa-question-circle',
     ]
     return {elements,fontawesomes,}
-  }
+  },
 })
 </script>
 
@@ -44,10 +51,10 @@ export default defineComponent({
   font-family Arial Narrow, sans-serif
   height 100%
   #hide
+    height 30px
     #menubar
       width 30px
-      height auto
-      margin 10px 10px 0 0
+      height atuo
       float right
       cursor pointer
       transition 0.1s ease
@@ -55,7 +62,9 @@ export default defineComponent({
         transform scale(1.1)
   #header
     width 350px
-    text-align center
+    position relative
+    left 50%
+    transform translateX(-50%)
     #logo
       width 330px
       height auto
